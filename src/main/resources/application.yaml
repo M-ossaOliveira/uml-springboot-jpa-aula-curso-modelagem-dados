@@ -1,0 +1,30 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: uml-springboot-jpa
+  #configuração da base de dados
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  #configuração do console h2
+  h2:
+    console.enabled: true
+    console.enabled.path: /h2-console
+  #configuração do JPA e do Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
